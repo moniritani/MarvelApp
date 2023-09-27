@@ -3,6 +3,7 @@ package com.monir.marvelapp.data.repository
 import com.monir.marvelapp.base.BaseResource
 import com.monir.marvelapp.base.ErrorType
 import com.monir.marvelapp.data.api.ApiService
+import com.monir.marvelapp.data.api.ApiVariables
 import com.monir.marvelapp.data.model.Character
 import com.monir.marvelapp.data.model.Comic
 import com.monir.marvelapp.data.model.Event
@@ -28,27 +29,27 @@ class MarvelRepository @Inject constructor(private val apiService: ApiService) {
         }
     }
 
-    suspend fun getCharacters(): BaseResource<Character> {
-        return safeApiCall { apiService.getCharacters() }
+    suspend fun getCharacters(offset: Int = 0,limit: Int = ApiVariables.DEFAULT_ITEMS_LIMIT): BaseResource<Character> {
+        return safeApiCall { apiService.getCharacters(offset,limit) }
     }
 
     suspend fun getCharacter(characterID: Int): BaseResource<Character> {
         return safeApiCall { apiService.getCharacter(characterID) }
     }
 
-    suspend fun getCharacterStories(characterID: Int): BaseResource<Story> {
-        return safeApiCall { apiService.getCharacterStories(characterID) }
+    suspend fun getCharacterStories(characterID: Int,offset: Int = 0,limit: Int = ApiVariables.DEFAULT_ITEMS_LIMIT): BaseResource<Story> {
+        return safeApiCall { apiService.getCharacterStories(characterID,offset,limit) }
     }
 
-    suspend fun getCharacterEvents(characterID: Int): BaseResource<Event> {
-        return safeApiCall { apiService.getCharacterEvents(characterID) }
+    suspend fun getCharacterEvents(characterID: Int,offset: Int = 0,limit: Int = ApiVariables.DEFAULT_ITEMS_LIMIT): BaseResource<Event> {
+        return safeApiCall { apiService.getCharacterEvents(characterID,offset,limit) }
     }
 
-    suspend fun getCharacterComics(characterID: Int): BaseResource<Comic> {
-        return safeApiCall { apiService.getCharacterComics(characterID) }
+    suspend fun getCharacterComics(characterID: Int,offset: Int = 0,limit: Int = ApiVariables.DEFAULT_ITEMS_LIMIT): BaseResource<Comic> {
+        return safeApiCall { apiService.getCharacterComics(characterID,offset,limit) }
     }
 
-    suspend fun getCharacterSeries(characterID: Int): BaseResource<Series> {
-        return safeApiCall { apiService.getCharacterSeries(characterID) }
+    suspend fun getCharacterSeries(characterID: Int,offset: Int = 0,limit: Int = ApiVariables.DEFAULT_ITEMS_LIMIT): BaseResource<Series> {
+        return safeApiCall { apiService.getCharacterSeries(characterID,offset,limit) }
     }
 }
