@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/charactersFragment">
+
+    <fragment
+        android:label="Characters Fragment"
+        android:id="@+id/charactersFragment"
+        android:name="com.monir.marvelapp.ui.characters.CharactersFragment">
+        <action
+            app:destination="@id/characterDetailsFragment"
+            android:id="@+id/action_firstFragment_to_secondFragment"/>
+    </fragment>
+
+    <fragment
+        android:label="Details Fragment"
+        android:id="@+id/characterDetailsFragment"
+        android:name="com.monir.marvelapp.ui.details.DetailsFragment">
+        <argument
+            app:argType="integer"
+            android:name="characterID"/>
+    </fragment>
+</navigation>

@@ -2,10 +2,12 @@ plugins {
     kotlin("kapt")
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("androidx.navigation.safeargs")
 }
 
 val roomVersion = "2.4.3"
 val retrofitVersion = "2.9.0"
+val navigationVersion = "2.7.3"
 val coroutinesVersion = "1.3.9"
 val lifeCycleVersion = "2.5.1"
 
@@ -42,6 +44,7 @@ android {
 
     buildFeatures{
         buildConfig = true
+        viewBinding = true
     }
 }
 
@@ -62,8 +65,9 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
 
     //Navigation
-    implementation("androidx.navigation:navigation-fragment-ktx:2.7.2")
-    implementation("androidx.navigation:navigation-ui-ktx:2.7.2")
+    implementation("androidx.navigation:navigation-fragment-ktx:$navigationVersion")
+    implementation("androidx.navigation:navigation-ui-ktx:$navigationVersion")
+
 
     //ViewModel + LiveData
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
