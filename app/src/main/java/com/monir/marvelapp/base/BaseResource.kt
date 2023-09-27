@@ -2,7 +2,7 @@ package com.monir.marvelapp.base
 
 import com.google.gson.annotations.SerializedName
 
-sealed class BaseResource<T>(
+open class BaseResource<T>(
     @SerializedName("data")
     val data: BaseDataContainer<T>? = null,
     @SerializedName("code")

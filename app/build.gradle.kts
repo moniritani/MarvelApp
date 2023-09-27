@@ -60,8 +60,6 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.1")
     implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
     implementation("com.squareup.retrofit2:converter-gson:$retrofitVersion")
-    implementation("com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion")
-    implementation("com.squareup.retrofit2:converter-scalars:$retrofitVersion")
 
     //Navigation
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.2")
