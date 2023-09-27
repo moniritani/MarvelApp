@@ -1,6 +1,7 @@
 plugins {
     kotlin("kapt")
     id("com.android.application")
+    id("dagger.hilt.android.plugin")
     id("org.jetbrains.kotlin.android")
     id("androidx.navigation.safeargs")
 }
@@ -72,6 +73,11 @@ dependencies {
     //ViewModel + LiveData
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
+
+    // Dagger/Hilt
+    val hiltVersion = "2.48" // Check for the latest version on the Hilt GitHub page or on Maven Repository
+    implementation("com.google.dagger:hilt-android:$hiltVersion")
+    kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
 
 
     testImplementation("junit:junit:4.13.2")

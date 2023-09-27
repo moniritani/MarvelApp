@@ -9,8 +9,9 @@ import com.monir.marvelapp.data.model.Event
 import com.monir.marvelapp.data.model.Series
 import com.monir.marvelapp.data.model.Story
 import retrofit2.Response
+import javax.inject.Inject
 
-class MarvelRepository(private val apiService: ApiService) {
+class MarvelRepository @Inject constructor(private val apiService: ApiService) {
 
     private suspend fun <T> safeApiCall(apiCall: suspend () -> Response<BaseResource<T>>): BaseResource<T> {
         return try {
