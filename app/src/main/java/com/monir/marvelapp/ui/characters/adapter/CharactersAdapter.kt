@@ -10,7 +10,9 @@ import com.monir.marvelapp.databinding.ItemCharacterBinding
 import com.monir.marvelapp.databinding.ItemLoadingBinding
 import com.monir.marvelapp.extensions.load
 
-class CharactersAdapter : ListAdapter<CharacterListItem, RecyclerView.ViewHolder>(CharacterDiffCallback()) {
+class CharactersAdapter(
+    private val navigator: CharactersNavigator
+) : ListAdapter<CharacterListItem, RecyclerView.ViewHolder>(CharacterDiffCallback()) {
 
     companion object {
         const val VIEW_TYPE_ITEM = 0
@@ -54,6 +56,15 @@ class CharactersAdapter : ListAdapter<CharacterListItem, RecyclerView.ViewHolder
 
         fun bind(character: Character) {
             with(binding) {
+
+                root.setOnClickListener {
+                    val position = adapterPosition
+                    if (position != RecyclerView.NO_POSITION) {
+                        val item = getItem(position)
+                        if (item is CharacterListItem.CharacterItem)
+                            navigator.onClick(item.character)
+                    }
+                }
                 txtName.text = character.name ?: "N/A"
                 txtDescription.text = character.description ?: "N/A"
                 tvComicsCount.text = "Comics: ${character.comics?.available ?: 0}"

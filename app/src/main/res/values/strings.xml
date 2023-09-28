@@ -1,3 +1,20 @@
 <resources>
+    <string name="empty_string" translatable="false" />
     <string name="app_name">MarvelApp</string>
+
+
+
+    <string name="empty_comics_list">No comics available</string>
+    <string name="empty_events_list">No events available</string>
+    <string name="empty_stories_list">No stories available</string>
+    <string name="empty_series_list">No series available</string>
+
+    <string name="title_comics_list">Comics</string>
+    <string name="title_events_list">Events</string>
+    <string name="title_stories_list">Stories</string>
+    <string name="title_series_list">Series</string>
+
+    <string name="character_id_title">ID: %1$d</string>
+
+
 </resources>

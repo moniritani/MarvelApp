@@ -11,15 +11,23 @@
         android:name="com.monir.marvelapp.ui.characters.CharactersFragment">
         <action
             app:destination="@id/characterDetailsFragment"
-            android:id="@+id/action_firstFragment_to_secondFragment"/>
+            android:id="@+id/action_CharactersFragment_to_detailsFragment"/>
     </fragment>
 
     <fragment
         android:label="Details Fragment"
         android:id="@+id/characterDetailsFragment"
-        android:name="com.monir.marvelapp.ui.details.DetailsFragment">
+        android:name="com.monir.marvelapp.ui.details.CharacterDetailsFragment">
         <argument
             app:argType="integer"
             android:name="characterID"/>
+        <argument
+            app:nullable="true"
+            app:argType="string"
+            android:name="characterName"/>
+        <argument
+            app:nullable="true"
+            android:name="characterThumbnail"
+            app:argType="com.monir.marvelapp.data.model.Thumbnail"/>
     </fragment>
 </navigation>

@@ -21,7 +21,11 @@ class CharactersFragment : BaseFragment<FragmentCharactersBinding>(FragmentChara
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        adapter = CharactersAdapter()
+        adapter = CharactersAdapter {
+            it.id?.let {characterID ->
+                goTo(CharactersFragmentDirections.actionCharactersFragmentToDetailsFragment(characterID,it.name,it.thumbnail))
+            }
+        }
         binding.rvCharacters.adapter = adapter
 
         binding.rvCharacters.layoutManager = LinearLayoutManager(requireContext())
