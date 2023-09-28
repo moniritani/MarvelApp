@@ -1,0 +1,43 @@
+<resources>
+
+    <!-- font sizes -->
+    <dimen name="font_larger">22sp</dimen>
+    <dimen name="font_large">18sp</dimen>
+    <dimen name="font_normal">15sp</dimen>
+    <dimen name="font_small">12sp</dimen>
+    <dimen name="font_too_small">10sp</dimen>
+    <dimen name="font_tiny">7sp</dimen>
+
+    <!-- corner radius -->
+    <dimen name="corner_radius_huge">25dp</dimen>
+    <dimen name="corner_radius_big">15dp</dimen>
+    <dimen name="corner_radius_normal">10dp</dimen>
+    <dimen name="corner_radius_small">5dp</dimen>
+
+    <!-- typical spacing between two views -->
+    <dimen name="spacing_xxl">70dp</dimen>
+    <dimen name="spacing_huge">40dp</dimen>
+    <dimen name="spacing_large">24dp</dimen>
+    <dimen name="spacing_normal">14dp</dimen>
+    <dimen name="spacing_small">10dp</dimen>
+    <dimen name="spacing_xSmall">6dp</dimen>
+    <dimen name="spacing_tiny">4dp</dimen>
+    <dimen name="spacing_micro">2dp</dimen>
+    <dimen name="spacing_nano">1dp</dimen>
+
+    <!--Elevation-->
+    <dimen name="elevation_low">2dp</dimen>
+    <dimen name="elevation_normal">5dp</dimen>
+    <dimen name="elevation_high">10dp</dimen>
+
+    <!--Stroke Width-->
+    <dimen name="stroke_thin">1dp</dimen>
+    <dimen name="stroke_normal">2dp</dimen>
+    <dimen name="stroke_thick">6dp</dimen>
+
+    <!--Progress Bar-->
+    <dimen name="progress_bar_thin">6dp</dimen>
+    <dimen name="progress_bar_normal">15dp</dimen>
+    <dimen name="progress_bar_thick">25dp</dimen>
+
+</resources>

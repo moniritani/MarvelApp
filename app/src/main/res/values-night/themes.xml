@@ -1,7 +1,15 @@
 <resources>
     <!-- Base application theme. -->
     <style name="Base.Theme.MarvelApp" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorSurface">@color/colorSurface</item>
+        <item name="colorOnSurface">@color/colorOnSurface</item>
+        <item name="colorPrimaryVariant">?colorPrimary</item>
+        <item name="colorSecondary">?colorPrimary</item>
+        <item name="colorSecondaryVariant">?colorPrimary</item>
+        <item name="colorPrimarySurface">?colorPrimary</item>
+        <item name="colorOnPrimary">?colorSurface</item>
+        <item name="colorOnSecondary">?colorOnPrimary</item>
+        <item name="colorOnBackground">?colorOnSurface</item>
     </style>
 </resources>

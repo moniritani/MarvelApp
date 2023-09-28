@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Text" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:textColor">@color/colorOnSurface</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="Text.H1">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/font_larger</item>
+    </style>
+
+    <style name="Text.H2">
+        <item name="android:textSize">@dimen/font_large</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="Text.H3">
+        <item name="android:textSize">@dimen/font_large</item>
+    </style>
+
+    <style name="Text.H3.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Text.Body">
+        <item name="android:textSize">@dimen/font_normal</item>
+    </style>
+
+    <style name="Text.Body.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Text.Body.Light">
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+    <style name="Text.Caption">
+        <item name="android:textSize">@dimen/font_small</item>
+    </style>
+
+</resources>

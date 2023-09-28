@@ -1,0 +1,5 @@
+<resources>
+    <declare-styleable name="DetailsSectionView">
+        <attr name="section_title" format="string" />
+    </declare-styleable>
+</resources>
