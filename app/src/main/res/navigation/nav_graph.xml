@@ -10,6 +10,10 @@
         android:id="@+id/charactersFragment"
         android:name="com.monir.marvelapp.ui.characters.CharactersFragment">
         <action
+            app:exitAnim="@anim/hold"
+            app:popEnterAnim="@anim/hold"
+            app:enterAnim="@anim/slide_in_bottom"
+            app:popExitAnim="@anim/slide_out_bottom"
             app:destination="@id/characterDetailsFragment"
             android:id="@+id/action_CharactersFragment_to_detailsFragment"/>
     </fragment>

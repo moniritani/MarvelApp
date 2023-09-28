@@ -34,6 +34,9 @@ class CharacterDetailsFragment : BaseFragment<FragmentCharacterDetailsBinding>(F
 
     private fun setupView(){
         initAdapters()
+        binding.btnClose.setOnClickListener {
+            popFragment()
+        }
         binding.tvCharacterName.text = args.characterName
         binding.tvCharacterId.text = getString(R.string.character_id_title, args.characterID)
         binding.imgCharacter.loadCircular(args.characterThumbnail?.imagePath)
