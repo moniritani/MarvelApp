@@ -1,10 +1,13 @@
 package com.monir.marvelapp.ui.characters.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.annotation.StringRes
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.monir.marvelapp.R
 import com.monir.marvelapp.data.model.Character
 import com.monir.marvelapp.databinding.ItemCharacterBinding
 import com.monir.marvelapp.databinding.ItemLoadingBinding
@@ -65,13 +68,22 @@ class CharactersAdapter(
                             navigator.onClick(item.character)
                     }
                 }
-                txtName.text = character.name ?: "N/A"
-                txtDescription.text = character.description ?: "N/A"
-                tvComicsCount.text = "Comics: ${character.comics?.available ?: 0}"
-                tvStoriesCount.text = "Stories: ${character.stories?.available ?: 0}"
-                tvEventsCount.text = "Events: ${character.events?.available ?: 0}"
-                tvStoriesCount.text = "Series: ${character.series?.available ?: 0}"
+
+                with(root.context){
+                    txtName.text = character.name ?: getString(R.string.not_available)
+                    txtDescription.text = character.description ?: getString(R.string.not_available)
+                    tvComicsCount.text = buildItemCount(this,R.string.title_comics_list,character.comics?.available)
+                    tvStoriesCount.text = buildItemCount(this,R.string.title_stories_list,character.stories?.available)
+                    tvEventsCount.text = buildItemCount(this,R.string.title_events_list,character.events?.available)
+                    tvSeriesCount.text = buildItemCount(this,R.string.title_series_list,character.series?.available)
+                }
                 imgThumbnail.load(character.thumbnail)
+            }
+        }
+
+        private fun buildItemCount(context: Context,@StringRes titleRes : Int, count : Int?) : String{
+            with(context){
+                return getString(R.string.items_count_label,getString(titleRes),count ?: 0)
             }
         }
     }
