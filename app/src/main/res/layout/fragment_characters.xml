@@ -16,9 +16,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
-
-    <!-- Your existing layout components... -->
-
     <LinearLayout
         android:gravity="center"
         android:visibility="gone"
@@ -34,8 +31,9 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <TextView
-            android:id="@+id/tvError"
             android:gravity="center"
+            android:id="@+id/tvError"
+            style="@style/Text.Body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/error_characters_load_failed"
@@ -49,7 +47,5 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </LinearLayout>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
