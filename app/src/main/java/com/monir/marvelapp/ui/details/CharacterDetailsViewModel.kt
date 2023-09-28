@@ -36,7 +36,7 @@ class CharacterDetailsViewModel @Inject constructor(private val repository: Marv
         getSeries(characterId)
     }
 
-    private fun getComics(characterId: Int) {
+    fun getComics(characterId: Int) {
         viewModelScope.launch {
             _comicsResource.postValue(BaseResource.Loading())
             when (val result = repository.getCharacterComics(characterId,0,3)) {
@@ -48,7 +48,7 @@ class CharacterDetailsViewModel @Inject constructor(private val repository: Marv
         }
     }
 
-    private fun getEvents(characterId: Int) {
+    fun getEvents(characterId: Int) {
         viewModelScope.launch {
             _eventsResource.postValue(BaseResource.Loading())
             when (val result = repository.getCharacterEvents(characterId,0,3)) {
@@ -60,7 +60,7 @@ class CharacterDetailsViewModel @Inject constructor(private val repository: Marv
         }
     }
 
-    private fun getStories(characterId: Int) {
+    fun getStories(characterId: Int) {
         viewModelScope.launch {
             _storiesResource.postValue(BaseResource.Loading())
             when (val result = repository.getCharacterStories(characterId,0,3)) {
@@ -72,7 +72,7 @@ class CharacterDetailsViewModel @Inject constructor(private val repository: Marv
         }
     }
 
-    private fun getSeries(characterId: Int) {
+    fun getSeries(characterId: Int) {
         viewModelScope.launch {
             _seriesResource.postValue(BaseResource.Loading())
             when (val result = repository.getCharacterSeries(characterId,0,3)) {

@@ -8,6 +8,7 @@ import com.monir.marvelapp.R
 import com.monir.marvelapp.base.BaseFragment
 import com.monir.marvelapp.databinding.FragmentCharacterDetailsBinding
 import com.monir.marvelapp.extensions.loadCircular
+import com.monir.marvelapp.ui.customwidgets.DetailsSectionView
 import com.monir.marvelapp.ui.details.adapter.ComicsAdapter
 import com.monir.marvelapp.ui.details.adapter.EventsAdapter
 import com.monir.marvelapp.ui.details.adapter.SeriesAdapter
@@ -45,15 +46,27 @@ class CharacterDetailsFragment : BaseFragment<FragmentCharacterDetailsBinding>(F
     private fun initAdapters(){
         comicsAdapter = ComicsAdapter()
         binding.sectionComics.setAdapter(comicsAdapter)
+        binding.sectionComics.retryCallback = DetailsSectionView.RetryCallback {
+            viewModel.getComics(args.characterID)
+        }
 
         storiesAdapter = StoriesAdapter()
         binding.sectionStories.setAdapter(storiesAdapter)
+        binding.sectionStories.retryCallback = DetailsSectionView.RetryCallback {
+            viewModel.getStories(args.characterID)
+        }
 
         adapterEvents = EventsAdapter()
         binding.sectionEvents.setAdapter(adapterEvents)
+        binding.sectionEvents.retryCallback = DetailsSectionView.RetryCallback {
+            viewModel.getEvents(args.characterID)
+        }
 
         adapterSeries = SeriesAdapter()
         binding.sectionSeries.setAdapter(adapterSeries)
+        binding.sectionSeries.retryCallback = DetailsSectionView.RetryCallback {
+            viewModel.getSeries(args.characterID)
+        }
     }
 
     private fun observeViewModel() {

@@ -16,4 +16,40 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
+
+    <!-- Your existing layout components... -->
+
+    <LinearLayout
+        android:gravity="center"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:id="@+id/layoutError"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/spacing_normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/tvError"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/error_characters_load_failed"
+            android:layout_marginBottom="@dimen/spacing_normal"/>
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Button.Retry"
+            tools:visibility="visible"
+            android:id="@+id/btnRetry"
+            android:text="@string/action_retry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

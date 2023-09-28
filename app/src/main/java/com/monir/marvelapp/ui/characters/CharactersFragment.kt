@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.monir.marvelapp.base.BaseFragment
 import com.monir.marvelapp.base.BaseResource
 import com.monir.marvelapp.databinding.FragmentCharactersBinding
+import com.monir.marvelapp.extensions.hide
+import com.monir.marvelapp.extensions.show
 import com.monir.marvelapp.ui.characters.adapter.CharacterListItem
 import com.monir.marvelapp.ui.characters.adapter.CharactersAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,6 +23,31 @@ class CharactersFragment : BaseFragment<FragmentCharactersBinding>(FragmentChara
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupRecyclerView()
+        binding.btnRetry.setOnClickListener {
+            viewModel.loadMoreCharacters()
+        }
+
+        // Observe LiveData from ViewModel
+        viewModel.charactersResource.observe(viewLifecycleOwner) { resource ->
+            binding.layoutError.hide()
+            when (resource) {
+                is BaseResource.Loading -> adapter.showLoadingItem()
+                is BaseResource.Success -> {
+                    adapter.hideLoadingItem()
+                    adapter.submitList(resource.data!!.data!!.map { CharacterListItem.CharacterItem(it) }){
+                        viewModel.recyclerSavedViewState?.let { parcelable ->
+                            binding.rvCharacters.layoutManager?.onRestoreInstanceState(parcelable)
+                            viewModel.recyclerSavedViewState = null
+                        }
+                    }
+                }
+                is BaseResource.Error -> if (adapter.currentList.isEmpty()) binding.layoutError.show() else adapter.hideLoadingItem()
+            }
+        }
+    }
+
+    private fun setupRecyclerView(){
         adapter = CharactersAdapter {
             it.id?.let {characterID ->
                 goTo(CharactersFragmentDirections.actionCharactersFragmentToDetailsFragment(characterID,it.name,it.thumbnail))
@@ -40,23 +67,6 @@ class CharactersFragment : BaseFragment<FragmentCharactersBinding>(FragmentChara
                     viewModel.loadMoreCharacters()
             }
         })
-
-        // Observe LiveData from ViewModel
-        viewModel.charactersResource.observe(viewLifecycleOwner) { resource ->
-            when (resource) {
-                is BaseResource.Loading -> adapter.showLoadingItem()
-                is BaseResource.Success -> {
-                    adapter.hideLoadingItem()
-                    adapter.submitList(resource.data!!.data!!.map { CharacterListItem.CharacterItem(it) }){
-                        viewModel.recyclerSavedViewState?.let { parcelable ->
-                            binding.rvCharacters.layoutManager?.onRestoreInstanceState(parcelable)
-                            viewModel.recyclerSavedViewState = null
-                        }
-                    }
-                }
-                is BaseResource.Error -> adapter.hideLoadingItem()
-            }
-        }
     }
 
     override fun onDestroyView() {
