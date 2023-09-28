@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.monir.marvelapp.data.model.Comic
 import com.monir.marvelapp.databinding.ItemComicBinding
-import com.monir.marvelapp.extensions.load
+import com.monir.marvelapp.extensions.loadCircular
 
 class ComicsAdapter : ListAdapter<Comic, ComicsAdapter.ComicViewHolder>(DiffCallback()) , ListSubmittingAdapter<Comic> {
 
@@ -23,7 +23,7 @@ class ComicsAdapter : ListAdapter<Comic, ComicsAdapter.ComicViewHolder>(DiffCall
     class ComicViewHolder(private val binding: ItemComicBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Comic) {
             with(binding) {
-                imgItem.load(item.thumbnail)
+                imgItem.loadCircular(item.thumbnail?.imagePath)
                 tvTitle.text = item.title
                 tvDescription.text = item.description
             }

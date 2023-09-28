@@ -7,7 +7,7 @@ import androidx.navigation.fragment.navArgs
 import com.monir.marvelapp.R
 import com.monir.marvelapp.base.BaseFragment
 import com.monir.marvelapp.databinding.FragmentCharacterDetailsBinding
-import com.monir.marvelapp.extensions.load
+import com.monir.marvelapp.extensions.loadCircular
 import com.monir.marvelapp.ui.details.adapter.ComicsAdapter
 import com.monir.marvelapp.ui.details.adapter.EventsAdapter
 import com.monir.marvelapp.ui.details.adapter.SeriesAdapter
@@ -34,9 +34,9 @@ class CharacterDetailsFragment : BaseFragment<FragmentCharacterDetailsBinding>(F
 
     private fun setupView(){
         initAdapters()
-        binding.imgCharacter.load(args.characterThumbnail)
         binding.tvCharacterName.text = args.characterName
         binding.tvCharacterId.text = getString(R.string.character_id_title, args.characterID)
+        binding.imgCharacter.loadCircular(args.characterThumbnail?.imagePath)
     }
 
     private fun initAdapters(){

@@ -11,7 +11,7 @@ import com.monir.marvelapp.R
 import com.monir.marvelapp.data.model.Character
 import com.monir.marvelapp.databinding.ItemCharacterBinding
 import com.monir.marvelapp.databinding.ItemLoadingBinding
-import com.monir.marvelapp.extensions.load
+import com.monir.marvelapp.extensions.loadCircular
 
 class CharactersAdapter(
     private val navigator: CharactersNavigator
@@ -77,7 +77,7 @@ class CharactersAdapter(
                     tvEventsCount.text = buildItemCount(this,R.string.title_events_list,character.events?.available)
                     tvSeriesCount.text = buildItemCount(this,R.string.title_series_list,character.series?.available)
                 }
-                imgThumbnail.load(character.thumbnail)
+                imgThumbnail.loadCircular(character.thumbnail?.imagePath)
             }
         }
 
