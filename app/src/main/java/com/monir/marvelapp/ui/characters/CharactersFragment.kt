@@ -26,9 +26,8 @@ class CharactersFragment : BaseFragment<FragmentCharactersBinding>(FragmentChara
                 goTo(CharactersFragmentDirections.actionCharactersFragmentToDetailsFragment(characterID,it.name,it.thumbnail))
             }
         }
-        binding.rvCharacters.adapter = adapter
 
-        binding.rvCharacters.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvCharacters.adapter = adapter
         binding.rvCharacters.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
@@ -42,25 +41,26 @@ class CharactersFragment : BaseFragment<FragmentCharactersBinding>(FragmentChara
             }
         })
 
-
-        // Initialize with empty list and a loading item
-        adapter.submitList(listOf(CharacterListItem.LoadingItem))
-
         // Observe LiveData from ViewModel
         viewModel.charactersResource.observe(viewLifecycleOwner) { resource ->
             when (resource) {
-                is BaseResource.Loading -> if(adapter.currentList.isNotEmpty()) adapter.showLoadingItem()
+                is BaseResource.Loading -> adapter.showLoadingItem()
                 is BaseResource.Success -> {
                     adapter.hideLoadingItem()
-                    val newList = mutableListOf<CharacterListItem>()
-                    newList.addAll(adapter.currentList.filterIsInstance<CharacterListItem.CharacterItem>())
-                    newList.addAll(resource.data!!.data!!.map { CharacterListItem.CharacterItem(it) })
-                    adapter.submitList(newList)
+                    adapter.submitList(resource.data!!.data!!.map { CharacterListItem.CharacterItem(it) }){
+                        viewModel.recyclerSavedViewState?.let { parcelable ->
+                            binding.rvCharacters.layoutManager?.onRestoreInstanceState(parcelable)
+                            viewModel.recyclerSavedViewState = null
+                        }
+                    }
                 }
-                is BaseResource.Error -> {
-                    adapter.hideLoadingItem()
-                }
+                is BaseResource.Error -> adapter.hideLoadingItem()
             }
         }
+    }
+
+    override fun onDestroyView() {
+        binding.rvCharacters.layoutManager?.onSaveInstanceState()?.let { viewModel.recyclerSavedViewState = it }
+        super.onDestroyView()
     }
 }
