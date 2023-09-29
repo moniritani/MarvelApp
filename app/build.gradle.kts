@@ -1,16 +1,18 @@
 plugins {
     kotlin("kapt")
+    id("com.google.devtools.ksp")
     id("com.android.application")
     id("dagger.hilt.android.plugin")
     id("org.jetbrains.kotlin.android")
     id("androidx.navigation.safeargs")
 }
 
-val roomVersion = "2.4.3"
-val retrofitVersion = "2.9.0"
-val navigationVersion = "2.7.3"
-val coroutinesVersion = "1.3.9"
-val lifeCycleVersion = "2.5.1"
+val roomVersion         = "2.4.3"
+val retrofitVersion     = "2.9.0"
+val glideVersion        = "4.14.2"
+val lifeCycleVersion    = "2.5.1"
+val navigationVersion   = "2.7.3"
+val coroutinesVersion   = "1.3.9"
 
 android {
     namespace = "com.monir.marvelapp"
@@ -50,15 +52,15 @@ android {
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.9.0")
+    implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
 
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
     // Glide
-    implementation("com.github.bumptech.glide:glide:4.13.2")
-    kapt("com.github.bumptech.glide:compiler:4.13.2")
+    implementation("com.github.bumptech.glide:glide:$glideVersion")
+    ksp("com.github.bumptech.glide:ksp:$glideVersion")
 
     //Retrofit
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.1")
@@ -75,7 +77,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
 
     // Dagger/Hilt
-    val hiltVersion = "2.48" // Check for the latest version on the Hilt GitHub page or on Maven Repository
+    val hiltVersion = "2.48"
     implementation("com.google.dagger:hilt-android:$hiltVersion")
     kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
 
